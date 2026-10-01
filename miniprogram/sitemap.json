@@ -1,0 +1,4 @@
+{
+  "desc": "律问 · 法律检索问答",
+  "rules": [{ "action": "allow", "page": "*" }]
+}

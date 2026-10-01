@@ -1,0 +1,31 @@
+<view class="page">
+  <view class="card brand-card">
+    <view class="logo">⚖️ 律问</view>
+    <view class="muted">法律检索问答 · 检索透明 · 引用可溯源</view>
+    <view class="muted stats" wx:if="{{stats}}">收录 {{stats.laws}} 部法律 · 现行 {{stats.articles}} 条</view>
+  </view>
+
+  <view class="card">
+    <view class="sec-title">服务器地址</view>
+    <view class="muted">当前：{{base || '（未设置，使用内置默认）'}}</view>
+    <input class="input" value="{{baseInput}}" placeholder="https://你的域名 或 http://IP:8080" placeholder-class="ph" bindinput="onBase" />
+    <view class="btn-primary" bindtap="saveBase">保存地址</view>
+    <view class="muted tip">开发调试填 http://服务器IP:8080 并在开发者工具勾选「不校验合法域名」；正式版必须为已备案的 https:// 域名。</view>
+  </view>
+
+  <view class="card">
+    <view class="sec-title">访问口令</view>
+    <view class="muted">{{hasToken ? '已登录（7 天内有效）' : '如站点开启了口令，请先登录'}}</view>
+    <input class="input" password value="{{pwd}}" placeholder="访问口令" placeholder-class="ph" bindinput="onPwd" />
+    <view class="btn-primary" bindtap="doLogin">登录</view>
+  </view>
+
+  <view class="card">
+    <view class="sec-title">如何提问</view>
+    <view class="muted line">① 输入法律问题，系统先用 BM25 在内置法条库中检索最相关的条文（可在问答页点开「检索到的 N 条法条」核对原文与相关度）；</view>
+    <view class="muted line">② 大模型仅依据检索到的条文作答，回答中的《法名》第X条引用可点击定位核对；</view>
+    <view class="muted line">③ 回答由 AI 生成，仅供参考，不构成法律意见。</view>
+  </view>
+
+  <view class="foot muted">计算法学方法 · 课程作业示例</view>
+</view>

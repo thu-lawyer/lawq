@@ -1,0 +1,31 @@
+.page { display: flex; flex-direction: column; height: 100vh; }
+.toolbar { padding: 20rpx 20rpx 6rpx; }
+.search { width: 100%; box-sizing: border-box; }
+.ph { color: #9a968c; }
+.depts {
+  white-space: nowrap; padding: 16rpx 20rpx; box-sizing: border-box;
+}
+.dept {
+  display: inline-block; padding: 8rpx 26rpx; margin-right: 14rpx;
+  background: #f0ede4; border: 1rpx solid #e4dfd3; border-radius: 999rpx;
+  font-size: 26rpx; color: #6b675e;
+}
+.dept.active { background: #2b5aa0; color: #fff; border-color: #2b5aa0; }
+.body { flex: 1; padding: 6rpx 20rpx 20rpx; box-sizing: border-box; }
+.head { padding: 6rpx 4rpx 14rpx; }
+.law-card, .art-card {
+  background: #fffdf8; border: 1rpx solid #e4dfd3; border-radius: 20rpx;
+  padding: 24rpx 28rpx; margin-bottom: 18rpx;
+}
+.law-name { font-size: 30rpx; font-weight: 700; margin-bottom: 12rpx; }
+.badges { margin-bottom: 8rpx; }
+.meta { font-size: 23rpx; }
+.back {
+  display: inline-block; color: #2b5aa0; font-size: 27rpx;
+  padding: 10rpx 24rpx; background: rgba(43, 90, 160, 0.08);
+  border-radius: 999rpx; margin-bottom: 16rpx;
+}
+.law-title { font-size: 32rpx; font-weight: 700; margin: 0 4rpx 18rpx; }
+.art-card .no { font-weight: 700; color: #1d4680; margin-bottom: 8rpx; font-size: 28rpx; }
+.art-card .txt { font-size: 27rpx; line-height: 1.85; white-space: pre-wrap; }
+.empty { text-align: center; padding: 80rpx 0; }

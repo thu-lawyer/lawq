@@ -1,0 +1,91 @@
+.page { display: flex; flex-direction: column; height: 100vh; }
+.chat { flex: 1; padding: 20rpx; box-sizing: border-box; }
+.chat-bottom { height: 30rpx; }
+
+.welcome { text-align: center; padding-top: 18vh; }
+.w-title { font-size: 40rpx; font-weight: 700; margin-bottom: 14rpx; }
+.w-sub { margin-bottom: 50rpx; }
+.suggests { display: flex; flex-wrap: wrap; justify-content: center; gap: 16rpx; padding: 0 30rpx; }
+.sug {
+  background: #f0ede4; border: 1rpx solid #e4dfd3; border-radius: 999rpx;
+  padding: 10rpx 26rpx; font-size: 26rpx; color: #2c2a25;
+}
+
+.who { font-size: 22rpx; color: #6b675e; margin-bottom: 8rpx; letter-spacing: 2rpx; }
+.msg-user, .msg-ai { margin-bottom: 34rpx; }
+.bubble-user {
+  background: #2b5aa0; color: #fff; padding: 20rpx 26rpx;
+  border-radius: 20rpx 20rpx 4rpx 20rpx; margin-left: 120rpx; line-height: 1.8;
+}
+.bubble-ai {
+  background: #f0ede4; border: 1rpx solid #e4dfd3; padding: 20rpx 26rpx;
+  border-radius: 20rpx 20rpx 20rpx 4rpx; line-height: 1.9; word-break: break-all;
+}
+
+.cites { margin-top: 14rpx; white-space: nowrap; }
+.cite-chip {
+  display: inline-block; background: rgba(168, 132, 44, 0.1); color: #a8842c;
+  border: 1rpx solid rgba(168, 132, 44, 0.35); border-radius: 999rpx;
+  font-size: 24rpx; padding: 6rpx 20rpx; margin-right: 12rpx;
+}
+.hits-entry {
+  margin-top: 14rpx; font-size: 24rpx; color: #2b5aa0;
+  background: rgba(43, 90, 160, 0.08); border-radius: 12rpx; padding: 12rpx 20rpx;
+  display: inline-block;
+}
+
+.disclaimer { text-align: center; font-size: 21rpx; color: #6b675e; padding: 4rpx 0; }
+.composer {
+  display: flex; align-items: flex-end; gap: 16rpx;
+  padding: 16rpx 20rpx calc(16rpx + env(safe-area-inset-bottom));
+  background: #fffdf8; border-top: 1rpx solid #e4dfd3;
+}
+.ta {
+  flex: 1; background: #f0ede4; border-radius: 18rpx; padding: 18rpx 24rpx;
+  font-size: 29rpx; max-height: 240rpx; min-height: 72rpx; width: auto;
+}
+.ph { color: #9a968c; }
+.send {
+  background: #2b5aa0; color: #fff; border-radius: 18rpx; font-size: 30rpx;
+  padding: 0 40rpx; height: 76rpx; line-height: 76rpx; margin: 0;
+}
+.send::after { border: none; }
+.send[disabled] { opacity: 0.55; color: #fff; background: #2b5aa0; }
+
+/* 抽屉 */
+.sheet-mask, .mask {
+  position: fixed; inset: 0; background: rgba(20, 18, 12, 0.45); z-index: 30;
+}
+.sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 31;
+  background: #fffdf8; border-radius: 30rpx 30rpx 0 0;
+  max-height: 68vh; transform: translateY(105%); transition: transform 0.25s ease;
+  display: flex; flex-direction: column;
+}
+.sheet.open { transform: translateY(0); }
+.sheet-head {
+  display: flex; justify-content: space-between; padding: 26rpx 30rpx;
+  font-weight: 700; border-bottom: 1rpx solid #e4dfd3;
+}
+.sheet-close { color: #6b675e; font-weight: 400; font-size: 26rpx; }
+.sheet-body { flex: 1; padding: 20rpx 24rpx; box-sizing: border-box; }
+.hit-card {
+  border: 1rpx solid #e4dfd3; background: #f6f4ef; border-radius: 18rpx;
+  padding: 20rpx 24rpx; margin-bottom: 18rpx;
+}
+.hit-card.flash { border: 2rpx solid #a8842c; }
+.hit-title { font-weight: 700; font-size: 28rpx; margin-bottom: 10rpx; }
+.hit-badges { margin-bottom: 8rpx; }
+.score-bar { height: 5rpx; background: #e4dfd3; border-radius: 4rpx; margin: 10rpx 0 14rpx; }
+.score-in { height: 100%; background: #a8842c; border-radius: 4rpx; }
+.hit-text { font-size: 26rpx; color: #6b675e; line-height: 1.8; }
+
+/* 登录卡片 */
+.login-card {
+  position: fixed; z-index: 31; left: 50%; top: 34%; transform: translate(-50%, -50%);
+  width: 78vw; background: #fffdf8; border-radius: 28rpx; padding: 40rpx 36rpx;
+  box-shadow: 0 20rpx 60rpx rgba(0, 0, 0, 0.25);
+}
+.login-title { font-size: 34rpx; font-weight: 700; margin-bottom: 10rpx; }
+.login-input { margin: 26rpx 0; }
+.err { color: #c0392b; font-size: 25rpx; margin-top: 14rpx; }

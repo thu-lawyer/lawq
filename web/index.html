@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="律问：基于内置现行法律库的法律检索问答，检索透明、引用可溯源">
+<title>律问 · 法律检索问答</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <div class="brand">⚖️ 律问<span class="sub">法律检索问答</span></div>
+  <nav>
+    <button class="tab-btn active" data-tab="ask">问答</button>
+    <button class="tab-btn" data-tab="laws">法条库</button>
+  </nav>
+  <div class="actions">
+    <span id="corpusBadge" class="badge ghost" hidden></span>
+    <button id="loginBtn" class="ghost-btn" hidden>🔑 口令</button>
+    <button id="themeBtn" class="ghost-btn" title="夜间模式">🌙</button>
+  </div>
+</header>
+
+<main>
+  <!-- ============ 问答 ============ -->
+  <section id="tab-ask" class="tab active ask-grid">
+    <div class="chat-col">
+      <div id="chat" class="chat">
+        <div class="welcome">
+          <h2>问一个法律问题</h2>
+          <p>我会先在<b>内置现行法律库</b>中检索相关条文，再据此作答——每条依据都可点开核对原文。</p>
+          <div id="suggests" class="suggests"></div>
+        </div>
+      </div>
+      <div class="composer">
+        <textarea id="q" rows="1" maxlength="500" placeholder="描述你的法律问题…（≤500 字，Ctrl/⌘ + Enter 发送）"></textarea>
+        <button id="send" class="primary">提问</button>
+      </div>
+      <p class="disclaimer">回答由 AI 基于内置法条库生成，仅供参考，不构成法律意见</p>
+      <!-- ICP 备案通过后取消注释并填入备案号：如 京ICP备2026XXXXXX号-1 -->
+      <!-- <p class="disclaimer" id="icp"></p> -->
+    </div>
+
+    <aside id="hitsPanel" class="hits-panel">
+      <div class="hits-head">
+        <span>检索到的法条</span>
+        <button id="hitsClose" class="ghost-btn only-mobile">收起</button>
+      </div>
+      <div id="hits" class="hits">
+        <p class="hits-empty">提问后，这里展示命中的法条与相关度。</p>
+      </div>
+    </aside>
+    <button id="hitsToggle" class="hits-fab only-mobile" hidden>⚖️ 法条</button>
+  </section>
+
+  <!-- ============ 法条库 ============ -->
+  <section id="tab-laws" class="tab">
+    <div class="laws-grid">
+      <aside class="laws-side">
+        <input id="lawSearch" placeholder="搜索法律名或条文关键词…">
+        <div id="deptList" class="dept-list"></div>
+      </aside>
+      <div class="laws-main">
+        <div id="lawListHead" class="laws-main-head"></div>
+        <div id="lawList"></div>
+        <div id="articleList" hidden>
+          <button id="backToLaws" class="ghost-btn">← 返回法律列表</button>
+          <div id="articleCards"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 口令登录 -->
+<div id="loginModal" class="modal-mask" hidden>
+  <div class="modal">
+    <h3>🔒 本站已开启访问口令</h3>
+    <p class="muted">输入站点口令后开始使用，7 天内免登录。</p>
+    <input id="pwdInput" type="password" placeholder="访问口令" autocomplete="current-password">
+    <p id="pwdErr" class="err" hidden>口令不正确</p>
+    <button id="pwdGo" class="primary">进入</button>
+  </div>
+</div>
+
+<div id="toast" hidden></div>
+<script src="/app.js"></script>
+</body>
+</html>

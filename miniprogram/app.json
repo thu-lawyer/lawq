@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/ask/ask",
+    "pages/laws/laws",
+    "pages/about/about"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#2b5aa0",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "律问 · 法律检索问答",
+    "backgroundColor": "#f6f4ef",
+    "backgroundTextStyle": "light"
+  },
+  "tabBar": {
+    "color": "#6b675e",
+    "selectedColor": "#2b5aa0",
+    "backgroundColor": "#fffdf8",
+    "borderStyle": "black",
+    "list": [
+      { "pagePath": "pages/ask/ask", "text": "问答" },
+      { "pagePath": "pages/laws/laws", "text": "法条库" },
+      { "pagePath": "pages/about/about", "text": "关于" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

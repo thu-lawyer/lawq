@@ -1,0 +1,51 @@
+/* 律问 · 全局样式（与网页端同风格：暖纸 + 墨蓝） */
+page {
+  background: #f6f4ef;
+  color: #2c2a25;
+  font-size: 30rpx;
+  line-height: 1.75;
+}
+.card {
+  background: #fffdf8;
+  border: 1rpx solid #e4dfd3;
+  border-radius: 24rpx;
+  padding: 24rpx;
+  margin: 20rpx;
+}
+.badge {
+  display: inline-block;
+  font-size: 20rpx;
+  padding: 2rpx 14rpx;
+  border-radius: 999rpx;
+  margin-right: 8rpx;
+  background: rgba(43, 90, 160, 0.1);
+  color: #2b5aa0;
+  border: 1rpx solid rgba(43, 90, 160, 0.25);
+}
+.badge.gold {
+  background: rgba(168, 132, 44, 0.1);
+  color: #a8842c;
+  border-color: rgba(168, 132, 44, 0.3);
+}
+.badge.ghost {
+  background: #f0ede4;
+  color: #6b675e;
+  border-color: #e4dfd3;
+}
+.btn-primary {
+  background: #2b5aa0;
+  color: #fff;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+  padding: 18rpx 0;
+  text-align: center;
+}
+.btn-primary.disabled { opacity: 0.55; }
+.muted { color: #6b675e; font-size: 26rpx; }
+.input {
+  background: #f0ede4;
+  border: 1rpx solid #e4dfd3;
+  border-radius: 16rpx;
+  padding: 16rpx 22rpx;
+  font-size: 28rpx;
+}

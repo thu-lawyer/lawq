@@ -1,0 +1,15 @@
+# 律问 · systemd 服务（deploy.sh 会替换路径后安装到 /etc/systemd/system/）
+[Unit]
+Description=律问 · 法律检索问答 (FastAPI/uvicorn)
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/lawq
+ExecStart=/opt/lawq/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8790
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

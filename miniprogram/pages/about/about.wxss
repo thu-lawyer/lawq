@@ -1,0 +1,11 @@
+.page { padding-bottom: 60rpx; }
+.brand-card { text-align: center; padding: 44rpx 24rpx; }
+.logo { font-size: 44rpx; font-weight: 700; margin-bottom: 10rpx; }
+.stats { margin-top: 10rpx; color: #2b5aa0; }
+.sec-title { font-weight: 700; font-size: 30rpx; margin-bottom: 12rpx; }
+.input { margin: 18rpx 0; width: 100%; box-sizing: border-box; }
+.ph { color: #9a968c; }
+.btn-primary { margin-top: 4rpx; }
+.tip { margin-top: 14rpx; font-size: 23rpx; line-height: 1.7; }
+.line { margin-bottom: 10rpx; line-height: 1.8; }
+.foot { text-align: center; padding: 30rpx; font-size: 23rpx; }

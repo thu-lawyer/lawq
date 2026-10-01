@@ -1,0 +1,76 @@
+<view class="page">
+  <scroll-view scroll-y class="chat" scroll-into-view="{{scrollTo}}" enhanced show-scrollbar="{{false}}">
+    <view wx:if="{{messages.length === 0}}" class="welcome">
+      <view class="w-title">问一个法律问题</view>
+      <view class="muted w-sub">先检索内置现行法律库，再生成带引用的回答</view>
+      <view class="suggests">
+        <view class="sug" wx:for="{{suggests}}" wx:key="*this" bindtap="onSugTap" data-q="{{item}}">{{item}}</view>
+      </view>
+    </view>
+
+    <block wx:for="{{messages}}" wx:key="index">
+      <view wx:if="{{item.role === 'user'}}" class="msg-user" id="m{{index}}">
+        <view class="who">你</view>
+        <view class="bubble-user">{{item.text}}</view>
+      </view>
+      <view wx:else class="msg-ai" id="m{{index}}">
+        <view class="who">⚖️ 律问</view>
+        <view class="bubble-ai">
+          <rich-text wx:if="{{item.done}}" nodes="{{item.nodes}}"></rich-text>
+          <text user-select decode="{{true}}">{{item.text || '正在检索法条…'}}</text>
+        </view>
+        <scroll-view wx:if="{{item.cites.length && item.done}}" scroll-x class="cites" enhanced show-scrollbar="{{false}}">
+          <view class="cite-chip" wx:for="{{item.cites}}" wx:for-item="c" wx:for-index="ci" wx:key="ci"
+                bindtap="onCiteTap" data-mi="{{index}}" data-ci="{{ci}}">📌 {{c.label}}</view>
+        </scroll-view>
+        <view wx:if="{{item.hits.length}}" class="hits-entry" bindtap="openHits" data-mi="{{index}}">
+          ⚖️ 检索到 {{item.hits.length}} 条法条 · 点击核对原文
+        </view>
+      </view>
+    </block>
+    <view class="chat-bottom" id="mEnd"></view>
+  </scroll-view>
+
+  <view class="disclaimer">回答由 AI 基于内置法条库生成，仅供参考，不构成法律意见</view>
+
+  <view class="composer">
+    <textarea class="ta" value="{{input}}" maxlength="500" auto-height
+              placeholder="描述你的法律问题…（≤500字）" placeholder-class="ph"
+              bindinput="onInput" confirm-type="send" bindconfirm="onSend"></textarea>
+    <button class="send {{asking ? 'disabled' : ''}}" disabled="{{asking}}" bindtap="onSend">提问</button>
+  </view>
+
+  <!-- 法条抽屉 -->
+  <view class="sheet-mask" wx:if="{{showHits !== null}}" bindtap="closeHits"></view>
+  <view class="sheet {{showHits !== null ? 'open' : ''}}">
+    <view class="sheet-head">
+      <text>检索到的法条</text>
+      <text class="sheet-close" bindtap="closeHits">收起</text>
+    </view>
+    <scroll-view scroll-y class="sheet-body">
+      <view wx:if="{{!hitList.length}}" class="muted" style="text-align:center;padding:60rpx 0;">未检索到相关法条</view>
+      <view class="hit-card {{hit.flash ? 'flash' : ''}}" wx:for="{{hitList}}" wx:key="index">
+        <view class="hit-title">{{index + 1}}. {{item.shortName}} · {{item.articleNo}}</view>
+        <view class="hit-badges">
+          <text class="badge">{{item.dept}}</text>
+          <text class="badge">{{item.level}}</text>
+          <text class="badge ghost">{{item.status}}</text>
+          <text class="badge {{item.via === '直查' ? 'gold' : 'ghost'}}">{{item.via === '直查' ? '精确命中' : '相关检索'}}</text>
+        </view>
+        <view class="score-bar"><view class="score-in" style="width:{{item.pct}}%"></view></view>
+        <view class="hit-text">{{item.text}}</view>
+      </view>
+      <view style="height:40rpx"></view>
+    </scroll-view>
+  </view>
+
+  <!-- 口令登录 -->
+  <view class="sheet-mask" wx:if="{{showLogin}}" bindtap="closeLogin"></view>
+  <view class="login-card" wx:if="{{showLogin}}">
+    <view class="login-title">🔒 本站已开启访问口令</view>
+    <view class="muted">输入站点口令后开始使用，7 天内免登录</view>
+    <input class="input login-input" password value="{{pwd}}" placeholder="访问口令" bindinput="onPwd" />
+    <view class="btn-primary" bindtap="doLogin">进入</view>
+    <view wx:if="{{loginErr}}" class="err">口令不正确</view>
+  </view>
+</view>
